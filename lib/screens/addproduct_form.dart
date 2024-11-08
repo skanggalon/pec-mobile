@@ -11,7 +11,7 @@ class AddProductFormPage extends StatefulWidget {
 class _AddProductFormPageState extends State<AddProductFormPage> {
   final _formKey = GlobalKey<FormState>();
   String _name = "";
-  int _amount = 0;
+  int _price = 0;
 	String _description = "";
   @override
   Widget build(BuildContext context) {
@@ -82,27 +82,27 @@ class _AddProductFormPageState extends State<AddProductFormPage> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: TextFormField(
                                   decoration: InputDecoration(
-                                    hintText: "Amount ...",
-                                    labelText: "Amount",
+                                    hintText: "Price ...",
+                                    labelText: "Price",
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(5.0),
                                     ),
                                   ),
                                   onChanged: (String? value) {
                                     setState(() {
-                                      _amount = int.tryParse(value!) ?? 0;
+                                      _price = int.tryParse(value!) ?? 0;
                                     });
                                   },
                                   validator: (String? value) {
                                     if (value == null || value.isEmpty) {
-                                      return "Amount tidak boleh kosong!";
+                                      return "Price tidak boleh kosong!";
                                     }
                                     final intValue = int.tryParse(value);
                                     if (intValue == null) {
-                                      return "Amount harus berupa angka!";
+                                      return "Price harus berupa angka!";
                                     }
                                     if (intValue < 0) {
-                                      return "Amount tidak boleh negatif";
+                                      return "Price tidak boleh negatif";
                                     }
                                     return null;
                                   },
@@ -130,7 +130,7 @@ class _AddProductFormPageState extends State<AddProductFormPage> {
                                                   children: [
                                                     Text('Name: $_name'),
                                                     Text('Description: $_description'),
-                                                    Text('Amount: $_amount'),
+                                                    Text('Price: $_price'),
                                                   ],
                                                 ),
                                               ),
